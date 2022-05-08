@@ -1,5 +1,7 @@
 ﻿using System.Reflection;
 using FluentValidation;
+using LobsterInk.Application.Adventures;
+using LobsterInk.Application.Common.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace LobsterInk.Application
@@ -10,7 +12,7 @@ namespace LobsterInk.Application
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
-
+            services.AddTransient<IAdventureService, AdventureService>();
             return services;
         }
     }
