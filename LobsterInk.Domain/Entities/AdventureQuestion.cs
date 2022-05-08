@@ -16,4 +16,5 @@ public class AdventureQuestion
     public virtual AdventureQuestion? Parent { get; set; }
 
     public ICollection<AdventureQuestion> Children { get; set; }
+    public ICollection<UserAdventureQuestionHistory> AdventureQuestionHistories { get; set; }
 }
