@@ -1,4 +1,4 @@
-﻿using LobsterInk.Application.Interfaces;
+﻿using LobsterInk.Application.Common.Interfaces;
 using LobsterInk.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
