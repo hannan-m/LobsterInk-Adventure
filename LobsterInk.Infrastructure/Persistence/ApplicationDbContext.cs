@@ -1,5 +1,5 @@
 ﻿using System.Reflection;
-using LobsterInk.Application.Interfaces;
+using LobsterInk.Application.Common.Interfaces;
 using LobsterInk.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,12 +9,11 @@ namespace LobsterInk.Infrastructure.Persistence
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            
         }
 
-        public DbSet<Adventure> Adventures { get; }
-        public DbSet<AdventureQuestion> AdventureQuestions { get; }
-        public DbSet<UserAdventureQuestionHistory> UserAdventureQuestionsHistory { get; }
+        public DbSet<Adventure> Adventures { get; set; }
+        public DbSet<AdventureQuestion> AdventureQuestions { get; set; }
+        public DbSet<UserAdventureQuestionHistory> UserAdventureQuestionsHistory { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
