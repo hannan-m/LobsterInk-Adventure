@@ -13,6 +13,7 @@ namespace LobsterInk.Application
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient<IAdventureService, AdventureService>();
+            services.AddTransient<IAdventureQuestionService, AdventureQuestionService>();
             return services;
         }
     }
