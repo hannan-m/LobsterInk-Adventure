@@ -27,15 +27,15 @@ namespace LobsterInk.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<List<AdventureViewModel>> Get(string id)
+        public async Task<AdventureViewModel?> Get(Guid id)
         {
-            return await _adventureService.GetById(id);
+            return await _adventureService.GetById(id.ToString());
         }
 
         [HttpGet("{id}/questions")]
-        public async Task<IEnumerable<TreeItem<AdventureQuestionViewModel>>> GetByIdWithQuestions(string id)
+        public async Task<IEnumerable<TreeItem<AdventureQuestionViewModel>>> GetByIdWithQuestions(Guid id)
         {
-            var question = await _adventureService.GetByIdWithQuestion(id);
+            var question = await _adventureService.GetByIdWithQuestion(id.ToString());
             return question;
         }
 

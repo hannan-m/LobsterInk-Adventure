@@ -17,17 +17,18 @@ namespace LobsterInk.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateHistory(string adventureId, string userId)
+        public async Task<IActionResult> CreateHistory(Guid adventureId, Guid userId)
         {
-            await _adventureQuestionHistoryService.Add(adventureId, userId);
+            await _adventureQuestionHistoryService.Add(adventureId.ToString(), userId.ToString());
             return NoContent();
         }
 
         [HttpGet]
-        public async Task<List<UserAdventureQuestionHistoryViewModel>> GetFirstByAdventureId(string adventureId,
-            string userId)
+        public async Task<List<UserAdventureQuestionHistoryViewModel>> GetFirstByAdventureId(Guid adventureId,
+            Guid userId)
         {
-            var question = await _adventureQuestionHistoryService.GetByAdventureId(adventureId, userId);
+            var question = 
+                await _adventureQuestionHistoryService.GetByAdventureId(adventureId.ToString(), userId.ToString());
             return question;
         }
     }
