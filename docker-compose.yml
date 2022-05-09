@@ -9,6 +9,8 @@ services:
     environment:
       - "UseInMemoryDatabase=false"
       - "ConnectionStrings__DefaultConnection=Data Source=Adventure.db"
+    volumes:
+    - ~/.aspnet/https:/https:ro
     ports:
       - "5000:5000"
       - "5001:5001"
