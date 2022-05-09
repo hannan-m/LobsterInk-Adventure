@@ -3,6 +3,8 @@ using FluentValidation.AspNetCore;
 using LobsterInk.API.Filters;
 using LobsterInk.Application;
 using LobsterInk.Infrastructure;
+using LobsterInk.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -33,4 +35,17 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+EnsureDBCreated();
 app.Run();
+
+void EnsureDBCreated()
+{
+    using var scope = app.Services.CreateScope();
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+    context.Database.EnsureCreated();
+    if (context.Database.IsSqlServer())
+    {
+        context.Database.Migrate();
+    }
+}
