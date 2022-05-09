@@ -23,12 +23,16 @@ The easiest way to get started is to install the [NuGet package](https://www.nug
 
 1. Install the latest [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
 2. Clone the repository
-3. Navigate to cloned repo path and run `dotnet restore` to restore the nuget packages
-4. `dotnet build` to build the solution
-5. `dotnet run` to launch the back end (ASP.NET Core Web API)
-
+3. Navigate to cloned repo path and run `dotnet restore LobsterInk.API` to restore the nuget packages
+4. `dotnet build LobsterInk.API` to build the solution
+5. `dotnet run --project LobsterInk.API` to launch the back end (ASP.NET Core Web API)
+6. Navigate to `https://localhost:5001/swagger/index.html`
 
 ### Docker Configuration
+
+1. Build the docker image using `docker-compose build` inside the root folder
+2. Run the image using `docker-compose up`
+3. Navigate to `https://localhost:5001/swagger/index.html`
 
 To disable Docker in Visual Studio, right-click on the **docker-compose** file in the **Solution Explorer** and select **Unload Project**.
 
