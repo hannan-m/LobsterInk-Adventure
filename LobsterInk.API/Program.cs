@@ -16,7 +16,6 @@ builder.Services.AddControllersWithViews(options =>
         options.Filters.Add<ApiExceptionFilterAttribute>())
     .AddFluentValidation(x =>
     {
-        x.AutomaticValidationEnabled = false;
         x.ImplicitlyValidateChildProperties = true;
     })
     .AddJsonOptions(options => { options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles; });
