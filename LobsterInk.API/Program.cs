@@ -1,4 +1,6 @@
 using System.Text.Json.Serialization;
+using FluentValidation.AspNetCore;
+using LobsterInk.API.Filters;
 using LobsterInk.Application;
 using LobsterInk.Infrastructure;
 
@@ -8,10 +10,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
-builder.Services.AddControllers().AddJsonOptions(options =>
-{
-    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-});
+builder.Services.AddControllersWithViews(options =>
+        options.Filters.Add<ApiExceptionFilterAttribute>())
+    .AddJsonOptions(options => { options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles; });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
