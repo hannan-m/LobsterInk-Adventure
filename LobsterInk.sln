@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LobsterInk.API", "LobsterInk.API\LobsterInk.API.csproj", "{132365F7-8D41-4658-8423-0897F5A3116C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LobsterInk.API", "LobsterInk.API\LobsterInk.API.csproj", "{132365F7-8D41-4658-8423-0897F5A3116C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LobsterInk.Domain", "LobsterInk.Domain\LobsterInk.Domain.csproj", "{B672B052-53D6-4BC8-BD30-7D89DC218A6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LobsterInk.Domain", "LobsterInk.Domain\LobsterInk.Domain.csproj", "{B672B052-53D6-4BC8-BD30-7D89DC218A6E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{952B12DD-F8DD-4627-934F-3E0EDAA7A8DB}"
 EndProject
@@ -19,11 +19,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{20696C95-24F1-44AD-B212-7DA2414DA9BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LobsterInk.Infrastructure", "LobsterInk.Infrastructure\LobsterInk.Infrastructure.csproj", "{10ECAB8A-16E4-4FE9-A6FD-D4E35BE4113F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LobsterInk.Infrastructure", "LobsterInk.Infrastructure\LobsterInk.Infrastructure.csproj", "{10ECAB8A-16E4-4FE9-A6FD-D4E35BE4113F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LobsterInk.Application", "LobsterInk.Application\LobsterInk.Application.csproj", "{B71C9880-8610-4FFE-B70B-7209B2CC0787}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LobsterInk.Application", "LobsterInk.Application\LobsterInk.Application.csproj", "{B71C9880-8610-4FFE-B70B-7209B2CC0787}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LobsterInk.Application.UnitTests", "LobsterInk.Application.UnitTests\LobsterInk.Application.UnitTests.csproj", "{3829DAF1-98CC-4592-9D14-DE1489A7791B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LobsterInk.Application.UnitTests", "LobsterInk.Application.UnitTests\LobsterInk.Application.UnitTests.csproj", "{3829DAF1-98CC-4592-9D14-DE1489A7791B}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{B477B955-DBCD-4F29-AD75-5B1C5DA11660}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{3829DAF1-98CC-4592-9D14-DE1489A7791B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3829DAF1-98CC-4592-9D14-DE1489A7791B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3829DAF1-98CC-4592-9D14-DE1489A7791B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B477B955-DBCD-4F29-AD75-5B1C5DA11660}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B477B955-DBCD-4F29-AD75-5B1C5DA11660}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B477B955-DBCD-4F29-AD75-5B1C5DA11660}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B477B955-DBCD-4F29-AD75-5B1C5DA11660}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  lobsterink.api:
+    image: ${DOCKER_REGISTRY-}lobsterinkapi
+    build:
+      context: .
+      dockerfile: LobsterInk.API/Dockerfile
+    environment:
+      - "UseInMemoryDatabase=false"
+      - "ConnectionStrings__DefaultConnection=Data Source=Adventure.db"
+    ports:
+      - "5000:5000"
+      - "5001:5001"
