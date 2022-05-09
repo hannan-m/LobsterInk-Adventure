@@ -14,7 +14,11 @@ builder.Services.AddInfrastructure(builder.Configuration);
 
 builder.Services.AddControllersWithViews(options =>
         options.Filters.Add<ApiExceptionFilterAttribute>())
-    .AddFluentValidation(x => x.AutomaticValidationEnabled = false)
+    .AddFluentValidation(x =>
+    {
+        x.AutomaticValidationEnabled = false;
+        x.ImplicitlyValidateChildProperties = true;
+    })
     .AddJsonOptions(options => { options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles; });
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
