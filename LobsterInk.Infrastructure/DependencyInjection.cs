@@ -19,7 +19,7 @@ namespace LobsterInk.Infrastructure
             else
             {
                 services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseSqlServer(
+                    options.UseSqlite(
                         configuration.GetConnectionString("DefaultConnection")));
             }
 
