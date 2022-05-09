@@ -19,8 +19,6 @@ Create a back-end for a simple web application which allows a player to choose t
 
 ## Getting Started
 
-The easiest way to get started is to install the [NuGet package](https://www.nuget.org/packages/Clean.Architecture.Solution.Template) and run `dotnet new ca-sln`:
-
 1. Install the latest [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
 2. Clone the repository
 3. Navigate to cloned repo path and run `dotnet restore LobsterInk.API` to restore the nuget packages
