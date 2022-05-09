@@ -17,6 +17,13 @@ namespace LobsterInk.Application.Adventures
 
         public async Task Add(string questionId, string userId)
         {
+            var questionExist = await _dbContext.AdventureQuestions.AnyAsync(q => q.Id == questionId);
+
+            if (!questionExist)
+            {
+                throw new NotFoundException(nameof(AdventureQuestion), questionId);
+            }
+
             var entity = await _dbContext.UserAdventureQuestionsHistory.FirstOrDefaultAsync(h =>
                 h.AdventureQuestionId == questionId && h.UserId == userId);
 

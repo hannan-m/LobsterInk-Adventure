@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using LobsterInk.Application.Adventures.ViewModels;
+using LobsterInk.Application.Common.Exceptions;
 using LobsterInk.Application.Common.Interfaces;
 using LobsterInk.Domain.Entities;
 using LobsterInk.Domain.Enums;
@@ -20,6 +21,13 @@ public class AdventureQuestionService : IAdventureQuestionService
 
     public async Task<AdventureQuestionViewModel?> GetFirstByAdventureId(string adventureId)
     {
+        var adventureExist = await _dbContext.Adventures.AnyAsync(a => a.Id == adventureId);
+
+        if (!adventureExist)
+        {
+            throw new NotFoundException(nameof(Adventure), adventureId);
+        }
+
         return await _dbContext.AdventureQuestions
             .Where(q => q.AdventureId == adventureId
                         && q.ParentNavigationId == null)
@@ -36,7 +44,7 @@ public class AdventureQuestionService : IAdventureQuestionService
 
     public async Task<AdventureQuestionViewModel?> GetById(string questionId)
     {
-        return await _dbContext.AdventureQuestions
+        var question = await _dbContext.AdventureQuestions
             .Where(q => q.Id == questionId)
             .Select(a => new AdventureQuestionViewModel
             {
@@ -47,10 +55,24 @@ public class AdventureQuestionService : IAdventureQuestionService
                 ParentNavigationId = a.ParentNavigationId
             })
             .FirstOrDefaultAsync();
+
+        if (question == null)
+        {
+            throw new NotFoundException(nameof(AdventureQuestion), questionId);
+        }
+
+        return question;
     }
 
-    public async Task<AdventureQuestion?> GetNext(string? currentQuestionId, QuestionType questionResponse)
+    public async Task<AdventureQuestion?> GetNext(string currentQuestionId, QuestionType questionResponse)
     {
+        var questionExist = await _dbContext.AdventureQuestions.AnyAsync(a => a.Id == currentQuestionId);
+
+        if (!questionExist)
+        {
+            throw new NotFoundException(nameof(AdventureQuestion), currentQuestionId);
+        }
+
         var question = await _dbContext.AdventureQuestions
             .Where(q => q.Id == currentQuestionId)
             .SelectMany(a => a.Children)
