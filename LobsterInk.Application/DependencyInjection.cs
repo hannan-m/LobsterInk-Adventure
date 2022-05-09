@@ -14,6 +14,7 @@ namespace LobsterInk.Application
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddTransient<IAdventureService, AdventureService>();
             services.AddTransient<IAdventureQuestionService, AdventureQuestionService>();
+            services.AddTransient<IAdventureQuestionHistoryService, AdventureQuestionHistoryService>();
             return services;
         }
     }
