@@ -1,4 +1,5 @@
 ﻿using LobsterInk.Application.Adventures;
+using LobsterInk.Application.Adventures.Models;
 using LobsterInk.Application.Adventures.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,9 +18,9 @@ namespace LobsterInk.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateHistory(Guid adventureId, Guid userId)
+        public async Task<IActionResult> CreateHistory(CreateUserAdventureQuestionHistoryModel model)
         {
-            await _adventureQuestionHistoryService.Add(adventureId.ToString(), userId.ToString());
+            await _adventureQuestionHistoryService.Add(model.AdventureQuestionId, model.UserId);
             return NoContent();
         }
 
