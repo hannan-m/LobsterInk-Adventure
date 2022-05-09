@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using LobsterInk.Application.Adventures.Models;
 using LobsterInk.Application.Adventures.ViewModels;
+using LobsterInk.Application.Common.Exceptions;
 using LobsterInk.Application.Common.Extensions;
 using LobsterInk.Application.Common.Interfaces;
 using LobsterInk.Domain.Entities;
@@ -60,7 +61,7 @@ namespace LobsterInk.Application.Adventures
             return adventures;
         }
 
-        public async Task<List<AdventureViewModel>> GetById(string id)
+        public async Task<AdventureViewModel?> GetById(string id)
         {
             var adventures = await _dbContext.Adventures
                 .Where(adventure => adventure.Id == id)
@@ -69,12 +70,24 @@ namespace LobsterInk.Application.Adventures
                     Id = adventure.Id,
                     Name = adventure.Name
                 })
-                .ToListAsync();
+                .FirstOrDefaultAsync();
+
+            if (adventures == null)
+            {
+                throw new NotFoundException(nameof(Adventure), id);
+            }
+
             return adventures;
         }
 
         public async Task<IEnumerable<TreeItem<AdventureQuestionViewModel>>> GetByIdWithQuestion(string id)
         {
+            var adventure = await _dbContext.Adventures.FindAsync(id);
+            if (adventure == null)
+            {
+                throw new NotFoundException(nameof(Adventure), id);
+            }
+
             var adventureQuestions = await _dbContext.AdventureQuestions
                 .Where(adventure => adventure.AdventureId == id)
                 .Select(question => new AdventureQuestionViewModel
