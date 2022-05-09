@@ -18,7 +18,7 @@ namespace LobsterInk.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateHistory(CreateUserAdventureQuestionHistoryModel model)
+        public async Task<IActionResult> CreateHistory([FromBody] CreateUserAdventureQuestionHistoryModel model)
         {
             await _adventureQuestionHistoryService.Add(model.AdventureQuestionId, model.UserId);
             return NoContent();
