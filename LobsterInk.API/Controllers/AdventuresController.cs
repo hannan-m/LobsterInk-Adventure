@@ -40,7 +40,7 @@ namespace LobsterInk.API.Controllers
         }
 
         [HttpPost]
-        public async Task<string> Create(CreateAdventureModel model)
+        public async Task<string> Create([FromBody] CreateAdventureModel model)
         {
             return await _adventureService.CreateAdventure(model);
         }
